@@ -79,7 +79,7 @@ public class Shoe {
 
     //logic for resetting the shoe when the threshold is reached 
     public void resetShoe() {
-        System.out.println("****************Threshold Reached. Resetting the shoe.****************");
+        System.out.println("**** Cut card reached, shoe change! ****");
         //clear the list of decks 
         decks.clear();
         // add the number of deck objects passed (6) to the shoe
