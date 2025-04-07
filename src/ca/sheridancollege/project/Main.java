@@ -11,7 +11,8 @@ package ca.sheridancollege.project;
 public class Main {
 
     public static void main(String[] args) {
-        BlackjackGame game = new BlackjackGame("Blackjack Game");
+        // Instatiate a new BlackjackGame
+        BlackjackGame game = new BlackjackGame("Blackjack");
         game.play();
 
     }

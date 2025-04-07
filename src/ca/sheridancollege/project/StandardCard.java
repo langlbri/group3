@@ -6,7 +6,7 @@ package ca.sheridancollege.project;
 
 /**
  *
- * @author britt
+ * @author group 3
  */
 public class StandardCard extends Card {
 
@@ -18,10 +18,12 @@ public class StandardCard extends Card {
         this.rank = rank;
     }
 
+    // Return the suit of the StandardCard
     public Suit getSuit() {
         return suit;
     }
 
+    // Return the Rank of the StandardCard
     public Rank getRank() {
         return rank;
     }

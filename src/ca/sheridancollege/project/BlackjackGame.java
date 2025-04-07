@@ -6,7 +6,7 @@ package ca.sheridancollege.project;
 
 /**
  *
- * @author group 3 
+ * @author group 3
  */
 import java.util.Scanner;
 
@@ -39,18 +39,18 @@ public class BlackjackGame extends Game {
     @Override
     public void play() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Welcome to ** BLACKJACK ** \nWould you like to play a round of Blackjack? (Y/N): ");
+        System.out.print("Welcome to ** " + super.getName() + " ** \nWould you like to play a round of Blackjack? (Y/N): ");
         String startResponse = scanner.nextLine().trim();
 
-        // if input is NOT "Y" for yes, then print goodbye message 
+        //If input is NOT "Y" for yes, then print goodbye message 
         if (!startResponse.equalsIgnoreCase("Y")) {
-            System.out.println("Thanks for playing! Bye!");
+            System.out.println("Thanks for playing " + super.getName() + ". Bye!");
             return;
         }
 
-        //a flag to loop through game logic while continuePlaying = true, game ends when player says no, and flag changes to false. 
+        //Flag to loop through game logic while continuePlaying = true, game ends when player says no, and flag changes to false. 
         boolean continuePlaying = true;
-        //while player wants to keep playing, repeat the loop
+        //While player wants to keep playing, repeat the loop
         while (continuePlaying) {
             startRound(scanner); //call start round method below
             declareWinner(); //after the round, declare the winner 
@@ -58,7 +58,7 @@ public class BlackjackGame extends Game {
             System.out.println("Current Score: Dealer " + dealerScore + " : "
                     + player.getName() + " " + playerScore);
 
-            //validation 
+            //Input Validation 
             boolean validResponse = false;
             while (!validResponse) {
                 System.out.print("Play another round? (Y/N): ");
@@ -75,7 +75,7 @@ public class BlackjackGame extends Game {
                 }
             }
         }
-        System.out.println("Bye! Thanks for playing!");
+        System.out.println("Bye! Thanks for playing " + super.getName()); //goodbye message
     }
 
     //logic for starting the round and playing the round
@@ -92,7 +92,7 @@ public class BlackjackGame extends Game {
         if (dealer.mightHaveBlackjack()) {
             System.out.println("Dealer is checking for Blackjack...");
             if (dealer.getHand().isBlackjack()) {
-                System.out.println("***** Dealer has Blackjack! *****");
+                System.out.println("**** Dealer has Blackjack! ****");
                 System.out.println("Dealer's full hand: " + dealer.getHand()
                         + " (Total: " + dealer.getHand().calculateHandValue() + ")");
 
@@ -104,7 +104,7 @@ public class BlackjackGame extends Game {
                 } else {
                     System.out.println("Dealer wins with Blackjack!");
                     //dealer score goes up for running total of rounds won 
-                    dealerScore++;
+                    //dealerScore++;
                 }
                 return;
             }
@@ -112,37 +112,37 @@ public class BlackjackGame extends Game {
 
         // Check if the player has Blackjack on the initial deal 
         if (player.getHand().isBlackjack()) {
-            System.out.println("******** Blackjack! " + player.getName() + " wins! ********");
-            playerScore++;
+            System.out.println("**** Blackjack! " + player.getName() + " wins! ****");
+            //playerScore++;
             System.out.println("Dealer's full hand: " + dealer.getHand()
                     + " (Total: " + dealer.getHand().calculateHandValue() + ")");
             return;
         }
 
-        // player's turn logic in the player's play() method
-        // passing dealer and scanner
+        // Player's turn logic in the player's play() method
+        // Passing dealer and scanner
         player.play(dealer, scanner);
 
-        // checking if player's hand is over 21, if so, the round ends. 
+        // Checking if player's hand is over 21, if so, the round ends. 
         if (player.getHand().isBusted()) {
-            dealerScore++;
+            //dealerScore++;
             return;
         }
 
-        // dealer's turn (logic in Dealer class play() method)
+        // Dealer's turn (logic in Dealer class play() method)
         dealer.play();
     }
 
-    //declaring the winner by comparing hand values, increasing the player or dealer score counter accordingly 
+    //Declaring the winner by comparing hand values, increasing the player or dealer score counter accordingly 
     @Override
     public void declareWinner() {
         int playerValue = player.getHand().calculateHandValue();
         int dealerValue = dealer.getHand().calculateHandValue();
         if (player.getHand().isBusted()) {
-            System.out.println("PLAYER BUSTS. DEALER WINS.");
+            System.out.println(player.getName() + " BUSTS. DEALER WINS.");
             dealerScore++;
         } else if (dealer.getHand().isBusted()) {
-            System.out.println("DEALER BUSTS. PLAYER WINS!");
+            System.out.println("DEALER BUSTS. " + player.getName() + " WINS!");
             playerScore++;
         } else if (playerValue > dealerValue) {
             System.out.println(player.getName() + " wins with " + playerValue
@@ -157,4 +157,3 @@ public class BlackjackGame extends Game {
         }
     }
 }
-

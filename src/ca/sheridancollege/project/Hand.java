@@ -9,25 +9,27 @@ package ca.sheridancollege.project;
  * @author britt
  */
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Hand extends GroupOfCards {
 
+    //Hand is a private list of Card objects 
     private ArrayList<Card> hand;
 
+    //Instatianting a Hand with int size 0 
     public Hand() {
         super(0);
         hand = new ArrayList<Card>();
     }
 
+    // Add a card to the hand 
     public void addCard(Card card) {
-        getCards().add(card); 
+        getCards().add(card);
     }
 
-    // This method calculates the value of the hand
+    // Calculate the value of the hand
     public int calculateHandValue() {
-        int value = 0; // total hand value 
-        int aceCount = 0; // tracking how many aces in a hand 
+        int value = 0; // Total hand value 
+        int aceCount = 0; // Counting how many aces in a hand 
 
         // For each card in the hand
         for (Card card : getCards()) {
@@ -50,12 +52,14 @@ public class Hand extends GroupOfCards {
         return value; // Return the total value of the hand 
     }
 
+    // Check if hand value exceeds 21
     public boolean isBusted() {
-        return calculateHandValue() > 21; // Check if hand value exceeds 21
+        return calculateHandValue() > 21;
     }
 
+    // Check if hand is a blackjack
     public boolean isBlackjack() {
-        return getCards().size() == 2 && calculateHandValue() == 21; // Check if hand is a blackjack
+        return getCards().size() == 2 && calculateHandValue() == 21;
     }
 
     public void clearHand() {

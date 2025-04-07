@@ -9,26 +9,26 @@ import java.util.List;
 
 /**
  *
- * @author britt
+ * @author group 3
  */
 import java.util.ArrayList;
-import java.util.Collections;
+
 public class Shoe {
 
-    private final List<Deck> decks; //list of deck objects to be contained in the shoe 
-    private int numCardsDealt; //tracking how many cards have been dealt from the shoe 
-    private int shoeResetThreshold; //a threshold value to reset the shoe 
-    private final int numberOfDecks; // the number of deck objects to place in the shoe 
+    private final List<Deck> decks; //List of deck objects to be contained in the shoe 
+    private int numCardsDealt; //Tracking how many cards have been dealt from the shoe 
+    private int shoeResetThreshold; //Threshold value to reset the shoe 
+    private final int numberOfDecks; // Number of deck objects to place in the shoe 
 
     public Shoe(int numberOfDecks) {
         this.numberOfDecks = numberOfDecks;
         decks = new ArrayList<>();
-        //add a deck to the shoe 
+        //Add a deck to the Shoe 
         for (int i = 0; i < numberOfDecks; i++) {
             decks.add(new Deck());
         }
         numCardsDealt = 0;
-        //call the generate threshold method which randomly calculates a number to set as a threshold to reset the shoe 
+        //Call the generate threshold method which randomly calculates a number to set as a threshold to reset the shoe 
         shoeResetThreshold = generateThreshold();
         shuffle();
     }
@@ -41,14 +41,14 @@ public class Shoe {
         return (int) (Math.random() * (290 - 260 + 1)) + 260;
     }
 
-    //for each deck in the shoe, shuffle the deck 
+    //For each deck in the shoe, shuffle the deck 
     public void shuffle() {
         for (Deck deck : decks) {
             deck.shuffle();
         }
     }
 
-    //method for dealing cards     
+    //Method for dealing cards     
     public Card dealCard() {
         //if the 6 decks in the shoe are gone, reset the shoe
         //this is a safety, since the shoe should be reset before reaching 0 from the threshold generated above
@@ -95,4 +95,3 @@ public class Shoe {
     }
 
 }
-

@@ -6,7 +6,7 @@ package ca.sheridancollege.project;
 
 /**
  *
- * @author group 3 
+ * @author group 3
  */
 import java.util.Scanner;
 
@@ -48,7 +48,6 @@ public class BlackjackPlayer extends Player {
 
     @Override
     public void play() {
-        // Not used because this subclass now uses play(Dealer, Scanner).
+        // This subclass now uses play(Dealer, Scanner).
     }
 }
-
