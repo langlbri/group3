@@ -62,13 +62,14 @@ public class Hand extends GroupOfCards {
         return getCards().size() == 2 && calculateHandValue() == 21;
     }
 
+    // Clear all cards from the hand
     public void clearHand() {
-        getCards().clear(); // Clear all cards from the hand
+        getCards().clear();
     }
 
     @Override
     public ArrayList<Card> getCards() {
-        return hand; // Return the hand
+        return hand;
     }
 
     @Override

@@ -6,7 +6,7 @@ package ca.sheridancollege.project;
 
 /**
  *
- * @author britt
+ * @author group 3
  */
 public class Main {
 

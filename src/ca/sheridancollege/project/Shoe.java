@@ -9,6 +9,20 @@ import java.util.List;
 
 /**
  *
+ * The SHOE is used in a game of Blackjack to hold multiple decks of playing
+ * cards. It is a plastic holder filled with cards, typically 6 decks of cards
+ * (for Blackjack) The Shoe is used so that players cannot easily count how many
+ * cards have been used from a deck, because that would give the player an
+ * unfair advantage The Shoe class below accurately represents how a Show
+ * functions for casino card games. When the BlackjackGame is instantiated, it
+ * creates a Shoe object and passes int numberOfDecks. This allows the code to
+ * be flexible. If the Shoe were to be used in another game that only requires 1
+ * deck, then when that game is instantiated and creates a Shoe object, it would
+ * be writtens as Shoe shoe = new Shoe(1)
+ *
+ * The Dealer is the only player that should interact with the Shoe. Players
+ * cannot deal themselves cards.
+ *
  * @author group 3
  */
 import java.util.ArrayList;
@@ -21,9 +35,9 @@ public class Shoe {
     private final int numberOfDecks; // Number of deck objects to place in the shoe 
 
     public Shoe(int numberOfDecks) {
-        this.numberOfDecks = numberOfDecks;
+        this.numberOfDecks = numberOfDecks; //passed from BlackjackGame - how many decks are in the Shoe
         decks = new ArrayList<>();
-        //Add a deck to the Shoe 
+        //Add a deck to the Shoe for each decks in numberOfDecks
         for (int i = 0; i < numberOfDecks; i++) {
             decks.add(new Deck());
         }
@@ -37,6 +51,7 @@ public class Shoe {
     //since shoe has 6 decks of 52 cards, the shoe has 312 cards 
     //generating a number between 260 and 290 (inclusive) to determine when to reset the shoe, 
     //so most cards are used but it is less predictable than a static number each time  
+    //this replicates how the game is played in real life
     private int generateThreshold() {
         return (int) (Math.random() * (290 - 260 + 1)) + 260;
     }
@@ -80,17 +95,17 @@ public class Shoe {
     //logic for resetting the shoe when the threshold is reached 
     public void resetShoe() {
         System.out.println("**** Cut card reached, shoe change! ****");
-        //clear the list of decks 
+        //clear the list of decks to remove any remaining cards 
         decks.clear();
         // add the number of deck objects passed (6) to the shoe
         for (int i = 0; i < numberOfDecks; i++) {
             decks.add(new Deck());
         }
-        //shuffle
+        //shuffle all the decks within the shoe 
         shuffle();
-        //reset counter 
+        //reset the counter for how many cards have been dealt from the Shoe, since it is now reset and filled with new cards. 
         numCardsDealt = 0;
-        //generate new threshold
+        //generate new threshold for when to reset the Shoe next
         shoeResetThreshold = generateThreshold();
     }
 
