@@ -16,7 +16,7 @@ public class BlackjackGame extends Game {
     private Dealer dealer; // game has a dealer - only dealer handles shoe 
     private BlackjackPlayer player; //game has a BlackjackPlayer 
     private int playerScore; //keeping score of rounds won by player
-    private int dealerScore;// keeping score of rounds won by dealer 
+    private int dealerScore;// keeping score of rounds won by dealer
 
     public BlackjackGame(String name) {
         super(name);
